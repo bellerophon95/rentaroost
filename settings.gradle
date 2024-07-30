@@ -1,0 +1,5 @@
+rootProject.name = 'rentaroost'
+include 'views-tracking-service', 'booking-service', 'common'
+include 'common'
+
+

@@ -1,0 +1,71 @@
+spring:
+  application:
+    name: booking-service
+  data:
+    mongodb:
+      database: bookings
+      uri: mongodb+srv://Kash:ZfZqK6A58m73aSci@cluster1.fkmfdim.mongodb.net/
+
+    redis:
+      password: rKxCJ1BP9IcXZETDwTq9gVbqb6pPy3cP
+      host: redis-18418.c244.us-east-1-2.ec2.redns.redis-cloud.com
+      port: 18418
+
+  graphql:
+    graphiql:
+      enabled: true
+      path: /graphiql
+
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: group-id
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    group:
+      id: group-id
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+    register-with-eureka: true
+  instance:
+    prefer-ip-address: true
+
+    metadata-map:
+      gRPC_port: 9093
+
+grpc:
+  service-names:
+    payment: PAYMENTS-SERVICE
+    listings: LISTINGS-SERVICE
+
+  server:
+    port: 9093
+
+  client:
+    payment-client:
+      address: 'static://127.0.0.1:9095'
+      enableKeepAlive: true
+      keepAliveWithoutCalls: true
+      negotiationType: plaintext
+
+#    listing-client:
+#      address: 'static://127.0.0.1:5198'
+#      enableKeepAlive: true
+#      keepAliveWithoutCalls: true
+#      negotiationType: plaintext
+
+kafka:
+  topics:
+    viewedListing: viewed-listing
+
+port:
+  address:
+    localhost:9092
+
+server:
+  port: 8380

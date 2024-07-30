@@ -1,0 +1,28 @@
+#input LocationInput{
+#    latitude: String
+#    longitude: String
+#}
+#
+#input BookingInput{
+#    propertyID: ID,
+#    location: LocationInput
+#}
+#
+#type Location{
+#    latitude: String
+#    longitude: String
+#}
+#
+#type Booking{
+#    id: ID
+#    location: Location
+#}
+#
+#type Mutation{
+#    createBooking(bookingInput: BookingInput): Booking
+#}
+#
+#type Query{
+#    getBookingById(id: ID): Booking
+#}
+#

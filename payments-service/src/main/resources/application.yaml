@@ -1,0 +1,50 @@
+spring:
+  application:
+    name: payments-service
+
+#  kafka:
+#    producer:
+#      transaction-id-prefix: 'sample-transaction-id'
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+
+    register-with-eureka: true
+
+  instance:
+    prefer-ip-address: true
+
+
+    metadata-map:
+      gRPC_port: 9195
+
+
+grpc:
+  server:
+    port: 9195
+
+  client:
+    listings-client:
+      address: 'static://127.0.0.1:9199'
+      enableKeepAlive: true
+      keepAliveWithoutCalls: true
+      negotiationType: plaintext
+
+server:
+  port: 4242
+
+stripe:
+  api:
+    key: sk_test_51PZc7QRqtPeSyXGDepHabQQ6x72v5t46JTzEqvfKRFJGuY3b7dyBI3elYZvX1IeAHxImgMsE6nwL10N3n9Br2ABn00HB1LFiKV
+
+  public:
+    api:
+      key: pk_test_51PZc7QRqtPeSyXGDyLMoxf56jfwHwbtqv5JkKql6otkYfXt3aek37lEt9Ff5QDwvraDIs1mDPYSyjajcQNXTw1z400ksTe03zi
+
+  webhooks:
+    endpoint:
+      secret: whsec_13e472f4fafb04d9889e413a1bbde16204a0c86cb6b065bd4a3d650a9ea6153d
+
+

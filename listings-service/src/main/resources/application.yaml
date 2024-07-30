@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: listings-service
+  data:
+    mongodb:
+      database: listings
+      uri: mongodb+srv://Kash:ZfZqK6A58m73aSci@cluster1.fkmfdim.mongodb.net/
+  graphql:
+    graphiql:
+      enabled: true
+      path: /graphiql
+
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: group-id
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+    register-with-eureka: true
+  instance:
+    prefer-ip-address: true
+
+
+    metadata-map:
+      gRPC_port: 9199
+
+
+grpc:
+  server:
+    port: 9199
+
+server:
+  port: 8085
+
+#  client:
+#    booking-service:
+#      address: 'static://127.0.0.1:9095'
+#      enableKeepAlive: true
+#      keepAliveWithoutCalls: true
+#      negotiationType: plaintext

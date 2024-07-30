@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="push-notification-service" />
+        <module name="dynamic-pricing-flink-job" />
+      </profile>
+      <profile name="Gradle Imported" enabled="true">
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.32/17d46b3e205515e1e8efd3ee4d57ce8018914163/lombok-1.18.32.jar" />
+        </processorPath>
+        <module name="booking-service.main" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="account-grpc" target="21" />
+      <module name="account-grpc.main" target="21" />
+      <module name="account-grpc.test" target="21" />
+      <module name="collator-grpc" target="21" />
+      <module name="collator-grpc.main" target="21" />
+      <module name="collator-grpc.test" target="21" />
+      <module name="com.gitlab.techschool.booking-service" target="21" />
+      <module name="com.gitlab.techschool.booking-service.main" target="21" />
+      <module name="com.gitlab.techschool.booking-service.test" target="21" />
+      <module name="com.gitlab.techschool.collator-grpc" target="21" />
+      <module name="com.gitlab.techschool.collator-grpc.main" target="21" />
+      <module name="com.gitlab.techschool.collator-grpc.test" target="21" />
+      <module name="com.kashmira.kfkservice.main" target="21" />
+      <module name="com.kashmira.kfkservice.test" target="21" />
+      <module name="common" target="21" />
+      <module name="common.main" target="21" />
+      <module name="common.test" target="21" />
+      <module name="firebase-notifs" target="21" />
+      <module name="firebase-notifs.main" target="21" />
+      <module name="firebase-notifs.test" target="21" />
+      <module name="flink-consumer" target="17" />
+      <module name="flink-consumer.main" target="17" />
+      <module name="flink-consumer.test" target="17" />
+      <module name="gateway-serv" target="21" />
+      <module name="gateway-serv.main" target="21" />
+      <module name="gateway-serv.test" target="21" />
+      <module name="gateway-service" target="21" />
+      <module name="gateway-service.main" target="21" />
+      <module name="gateway-service.test" target="21" />
+      <module name="graphql-egs" target="22" />
+      <module name="graphql-egs.main" target="22" />
+      <module name="graphql-egs.test" target="22" />
+      <module name="graphql-sample" target="22" />
+      <module name="graphql-sample.main" target="22" />
+      <module name="graphql-sample.test" target="22" />
+      <module name="graphql-service" target="21" />
+      <module name="grpc-sandbox" target="1.8" />
+      <module name="grpc-sandbox-2.grpc-sandbox" target="9" />
+      <module name="grpc-sandbox-2.grpc-sandbox.main" target="9" />
+      <module name="grpc-sandbox-2.grpc-sandbox.test" target="9" />
+      <module name="grpc-sandbox.main" target="1.8" />
+      <module name="grpc-sandbox.test" target="1.8" />
+      <module name="kafka-queue" target="21" />
+      <module name="kafka-queue.main" target="21" />
+      <module name="kafka-queue.test" target="21" />
+      <module name="kfkservice" target="21" />
+      <module name="kfkservice-consumer" target="21" />
+      <module name="kfkservice-consumer.main" target="21" />
+      <module name="kfkservice-consumer.test" target="21" />
+      <module name="kfkservice-producer" target="21" />
+      <module name="kfkservice-producer.main" target="21" />
+      <module name="kfkservice-producer.test" target="21" />
+      <module name="kfkservice.main" target="21" />
+      <module name="kfkservice.test" target="21" />
+      <module name="listing-service" target="21" />
+      <module name="listing-service.main" target="21" />
+      <module name="listing-service.test" target="21" />
+      <module name="messaging-stomp-websocket" target="17" />
+      <module name="messaging-stomp-websocket.main" target="17" />
+      <module name="messaging-stomp-websocket.test" target="17" />
+      <module name="order.service" target="21" />
+      <module name="order.service.main" target="21" />
+      <module name="order.service.test" target="21" />
+      <module name="product.service" target="21" />
+      <module name="product.service.main" target="21" />
+      <module name="product.service.test" target="21" />
+      <module name="shared" target="21" />
+      <module name="shared.main" target="21" />
+      <module name="shared.test" target="21" />
+      <module name="spring-boot-websocket" target="11" />
+      <module name="spring-kafka-example" target="1.5" />
+      <module name="views-tracking-service.main" target="21" />
+      <module name="views-tracking-service.test" target="21" />
+      <module name="websockets" target="21" />
+      <module name="websockets.main" target="21" />
+      <module name="websockets.test" target="21" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="push-notification-service" options="-parameters" />
+      <module name="spring-boot-websocket" options="-parameters" />
+    </option>
+  </component>
+</project>

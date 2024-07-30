@@ -1,0 +1,65 @@
+syntax = "proto3";
+
+package bookings;
+
+message Booking {
+  // Unique identifier for the booking.
+  string id = 1;
+  // ID of the user who made the booking.
+  string userId = 2;
+  // ID of the listing being booked.
+  string listingId = 3;
+  // Start date of the booking.
+  string startDate = 4;
+  // End date of the booking.
+  string endDate = 5;
+  // Total price for the booking.
+  double totalPrice = 6;
+  // Status of the booking (e.g., confirmed, canceled, pending).
+  Status status = 7;
+  // Creation timestamp of the booking.
+  string createdAt = 8;
+  // Update timestamp of the booking.
+  string updatedAt = 9;
+}
+
+// Enum defining the status of a booking.
+enum Status {
+  CONFIRMED = 0;
+  CANCELED = 1;
+  PENDING = 2;
+}
+
+// Service definition for booking operations.
+service BookingService {
+  // Create a new booking.
+  rpc CreateBooking(CreateBookingRequest) returns (Booking);
+  // Get a booking by its ID.
+  rpc GetBooking(GetBookingRequest) returns (Booking);
+  // List all bookings for a user.
+  rpc ListBookings(ListBookingsRequest) returns (stream Booking);
+}
+
+// Request message to create a new booking.
+message CreateBookingRequest {
+  // ID of the user making the booking.
+  string userId = 1;
+  // ID of the listing being booked.
+  string listingId = 2;
+  // Start date of the booking.
+  string startDate = 3;
+  // End date of the booking.
+  string endDate = 4;
+}
+
+// Request message to get a booking by its ID.
+message GetBookingRequest {
+  // ID of the booking to retrieve.
+  string bookingId = 1;
+}
+
+// Request message to list bookings for a user.
+message ListBookingsRequest {
+  // ID of the user to list bookings for.
+  string userId = 1;
+}

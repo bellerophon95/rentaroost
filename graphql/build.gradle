@@ -1,0 +1,107 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.3.2'
+	id 'io.spring.dependency-management' version '1.1.4'
+	id "com.google.protobuf" version "0.9.4"
+	id 'com.netflix.dgs.codegen' version '6.2.1'
+}
+
+group = 'com.kashmira'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+	}
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+ext {
+	set('springCloudVersion', "2023.0.1")
+	set('netflixDgsVersion', "9.0.0")
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	implementation group: 'com.netflix.eureka', name: 'eureka-client-jersey3', version: '2.0.0'
+
+	// https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-loadbalancer
+	implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-loadbalancer', version: '4.1.0'
+
+//	implementation 'org.springframework.boot:spring-boot-starter-graphql'
+	implementation 'net.devh:grpc-server-spring-boot-starter:2.15.0.RELEASE'
+	implementation 'javax.annotation:javax.annotation-api:1.3.2'
+	implementation 'org.springframework.cloud:spring-cloud-starter-loadbalancer'
+	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+	// https://mvnrepository.com/artifact/net.devh/grpc-client-spring-boot-starter
+	implementation group: 'net.devh', name: 'grpc-client-spring-boot-starter', version: '2.13.1.RELEASE'
+	implementation 'org.springframework.kafka:spring-kafka'
+	implementation 'com.netflix.graphql.dgs:graphql-dgs-spring-graphql-starter'
+	implementation 'com.google.code.gson:gson:2.11.0'
+
+}
+
+
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+		mavenBom "com.netflix.graphql.dgs:graphql-dgs-platform-dependencies:${netflixDgsVersion}"
+	}
+}
+
+generateJava {
+	schemaPaths = ["${projectDir}/src/main/resources/schema/schema.graphqls"]
+	packageName = 'com.kashmira.graphql.dgs'
+	generateClient = true
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
+
+repositories {
+	mavenCentral()
+}
+
+sourceSets {
+	main {
+		java {
+			srcDirs 'build/generated/source/proto/main/grpc'
+			srcDirs 'build/generated/source/proto/main/java'
+		}
+	}
+}
+
+protobuf {
+	protoc {
+		artifact = 'com.google.protobuf:protoc:3.11.2'
+	}
+
+	plugins {
+		grpc {
+			artifact = 'io.grpc:protoc-gen-grpc-java:1.26.0'
+		}
+	}
+
+	generateProtoTasks {
+		all()*.plugins {
+			grpc {}
+		}
+	}
+}
+
+//targetCompatibility = JavaVersion.VERSION_1_8

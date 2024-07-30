@@ -1,0 +1,116 @@
+input LocationInput {
+    latitude: String!
+    longitude: String!
+}
+
+input BookingInput {
+    propertyID: ID!
+    location: LocationInput!
+    checkInDate: String!
+    checkOutDate: String!
+    totalPrice: Float!
+    userID: String!
+}
+
+# Input type for creating or updating a listing
+input ListingInput {
+    # Name of the listing.
+    name: String!
+
+    # Description of the listing.
+    description: String
+
+    # Address of the listing.
+    address: String!
+
+    # ID of the host who owns the listing.
+    hostID: ID!
+
+    # Pricing details for the listing.
+    pricePerNight: Float!
+
+    # Number of bedrooms in the listing.
+    bedrooms: Int!
+
+    # Number of bathrooms in the listing.
+    bathrooms: Int!
+
+    # Maximum number of guests allowed.
+    maxGuests: Int!
+
+    # List of amenities provided.
+    amenities: [String!]!
+
+    # List of URLs for photos of the listing.
+    photoUrls: [String!]!
+
+    # Availability periods for the listing.
+    availability: [AvailabilityInput!]!
+
+    # The date and time when the listing was created.
+    createdAt: String
+
+    # The date and time when the listing was last updated.
+    updatedAt: String
+}
+
+# Input type for availability periods
+input AvailabilityInput {
+    # Start date of the availability period.
+    startDate: String!
+
+    # End date of the availability period.
+    endDate: String!
+}
+
+type Location {
+    latitude: String!
+    longitude: String!
+}
+
+type Booking {
+    id: ID!
+    propertyID: ID!
+    location: Location!
+    checkInDate: String!
+    checkOutDate: String!
+    totalPrice: Float!
+    createdAt: String!  # Assuming ISO 8601 format for timestamps
+    updatedAt: String!  # Assuming ISO 8601 format for timestamps
+    userID: String
+}
+
+input ListingFilter {
+    hostID: ID
+    location: LocationInput
+    minPrice: Float
+    maxPrice: Float
+}
+
+type Listing {
+    id: ID!
+    name: String!
+    description: String
+    address: String!
+    hostID: ID!
+    createdAt: String!  # Assuming ISO 8601 format for timestamps
+    updatedAt: String!  # Assuming ISO 8601 format for timestamps
+    bookings: [Booking!]!
+}
+
+type EntityCreationResponse {
+    message: String!
+}
+
+type Mutation {
+    createBooking(bookingInput: BookingInput!): EntityCreationResponse!
+    createListing(listingInput: ListingInput): EntityCreationResponse!
+    cancelBookingByID(bookingID: ID): Booking!
+    deleteListingByID(listingID: ID): Listing
+}
+
+type Query {
+    fetchBookingsByUserID(userID: ID!): [Booking]!
+    fetchListings(listingFilter: ListingFilter!): [Listing]!
+    fetchListing(listingID: ID!): Listing!
+}

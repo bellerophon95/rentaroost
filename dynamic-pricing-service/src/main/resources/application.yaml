@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: dynamic-pricing-service
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9092
+      group-id: group-id
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+  data:
+    redis:
+      password: rKxCJ1BP9IcXZETDwTq9gVbqb6pPy3cP
+      host: redis-18418.c244.us-east-1-2.ec2.redns.redis-cloud.com
+      port: 18418
+
+
+kafka:
+  topics:
+    viewedListing: viewed-listing
+
+port:
+  address:
+    localhost:9092
+
+server:
+  port: 8281
+

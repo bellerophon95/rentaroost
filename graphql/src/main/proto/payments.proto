@@ -1,0 +1,68 @@
+syntax = "proto3";
+
+package my_package;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/struct.proto";
+
+enum AccountType {
+  USER = 0;
+  CLIENT = 1;
+}
+
+enum Status {
+  SUCCESSFUL = 0;
+  PENDING = 1;
+  FAILED = 2; // todo:- Handle via async notif using kafka, send email
+  REQUIRES_PAYMENT_METHOD = 3;
+}
+
+message PaymentRequestPayload {
+  float amount = 1;
+  string userID = 2;
+  string propertyID = 3;
+  google.protobuf.Timestamp initiatedAt = 4;
+}
+
+message PaymentResponsePayload {
+  float amount = 1;
+  string userID = 2;
+  string propertyID = 3;
+  google.protobuf.Timestamp initiatedAt = 4;
+  Status status = 5;
+  float amount_capturable = 6;
+  float amount_received = 7;
+  string currency = 8;
+  string client_secret = 9;
+  google.protobuf.Timestamp created = 10;
+  repeated string payment_method_types = 11;
+  google.protobuf.Timestamp canceled_at = 12;
+  string cancellation_reason = 13;
+  string capture_method = 14;
+  string confirmation_method = 15;
+  string customer = 16;
+  string description = 17;
+  string invoice = 18;
+  string last_payment_error = 19;
+  string latest_charge = 20;
+  bool livemode = 21;
+  google.protobuf.Struct metadata = 22;
+  string next_action = 23;
+  string on_behalf_of = 24;
+  string payment_method = 25;
+  google.protobuf.Struct payment_method_options = 26;
+  bool processing = 27;
+  string receipt_email = 28;
+  string review = 29;
+  string setup_future_usage = 30;
+  string shipping = 31;
+  string source = 32;
+  string statement_descriptor = 33;
+  string statement_descriptor_suffix = 34;
+  string transfer_data = 35;
+  string transfer_group = 36;
+}
+
+service PaymentService {
+  rpc initiatePayment(PaymentRequestPayload) returns (PaymentResponsePayload);
+}
