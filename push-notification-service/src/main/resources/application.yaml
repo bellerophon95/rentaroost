@@ -1,0 +1,5 @@
+app:
+  firebase-configuration-file: /google/push-notifications-example-firebase-adminsdk.json
+#app.notifications.defaults={topic: 'news', title: 'Common topic - Hello', message: 'Sending test message 2 \uD83D\uDE42', token: 'ss22t03wz208eg:APA2idkkow223FE_0v5yHxqCLTyxAQafj6nWaqi4QzwZTW004q1PUux63UsFN', payloadMessageId: '123', payloadData: 'Hello. This is payload content.'}
+server:
+  port: 6700
